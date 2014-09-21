@@ -1,0 +1,17 @@
+{
+    "name": "campaignchain/location-facebook",
+    "description": "Facebook locations such as user and page stream, as well as status.",
+    "keywords": ["facebook", "user", "page", "stream"],
+    "type": "campaignchain-location",
+    "homepage": "http://www.campaignchain.com",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Sandro Groganz",
+            "email": "sandro@campaignchain.com"
+        }
+    ],
+    "require": {
+        "campaignchain/channel-facebook": "dev-master"
+    }
+}
