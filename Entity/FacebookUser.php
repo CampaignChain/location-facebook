@@ -488,7 +488,7 @@ class FacebookUser
      * @param string $coverInfoUrl
      * @return FacebookUser
      */
-    public function setCoverInfoUrlL($coverInfoUrl)
+    public function setCoverInfoUrl($coverInfoUrl)
     {
         $this->coverInfoUrl = $coverInfoUrl;
 
@@ -500,7 +500,7 @@ class FacebookUser
      *
      * @return string 
      */
-    public function getCoverInfoUrlL()
+    public function getCoverInfoUrl()
     {
         return $this->coverInfoUrl;
     }
