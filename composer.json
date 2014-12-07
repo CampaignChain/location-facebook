@@ -16,5 +16,14 @@
     },
     "autoload": {
         "psr-4": { "CampaignChain\\Location\\FacebookBundle\\": "" }
+    },
+    "extra": {
+        "campaignchain": {
+            "kernel": {
+                "classes": [
+                    "CampaignChain\\Location\\FacebookBundle\\CampaignChainLocationFacebookBundle"
+                ]
+            }
+        }
     }
 }
