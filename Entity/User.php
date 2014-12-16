@@ -14,36 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="campaignchain_location_facebook_user")
  */
-class FacebookUser
+class User extends LocationBase
 {
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @ORM\OneToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location", cascade={"persist"})
-     */
-    protected $location;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="FacebookPage", mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="Page", mappedBy="users")
      **/
     protected $pages;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $username;
-
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    protected $identifier;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -111,11 +88,6 @@ class FacebookUser
     protected $coverInfoUrl;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $description;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $phone;
@@ -151,66 +123,10 @@ class FacebookUser
     protected $scope;
 
     /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return FacebookUser
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * Set identifier
-     *
-     * @param string $identifier
-     * @return FacebookUser
-     */
-    public function setIdentifier($identifier)
-    {
-        $this->identifier = $identifier;
-
-        return $this;
-    }
-
-    /**
-     * Get identifier
-     *
-     * @return string 
-     */
-    public function getIdentifier()
-    {
-        return $this->identifier;
-    }
-
-    /**
      * Set displayName
      *
      * @param string $displayName
-     * @return FacebookUser
+     * @return User
      */
     public function setDisplayName($displayName)
     {
@@ -233,7 +149,7 @@ class FacebookUser
      * Set firstName
      *
      * @param string $firstName
-     * @return FacebookUser
+     * @return User
      */
     public function setFirstName($firstName)
     {
@@ -256,7 +172,7 @@ class FacebookUser
      * Set lastName
      *
      * @param string $lastName
-     * @return FacebookUser
+     * @return User
      */
     public function setLastName($lastName)
     {
@@ -279,7 +195,7 @@ class FacebookUser
      * Set gender
      *
      * @param string $gender
-     * @return FacebookUser
+     * @return User
      */
     public function setGender($gender)
     {
@@ -302,7 +218,7 @@ class FacebookUser
      * Set language
      *
      * @param string $language
-     * @return FacebookUser
+     * @return User
      */
     public function setLanguage($language)
     {
@@ -325,7 +241,7 @@ class FacebookUser
      * Set age
      *
      * @param integer $age
-     * @return FacebookUser
+     * @return User
      */
     public function setAge($age)
     {
@@ -348,7 +264,7 @@ class FacebookUser
      * Set birthday
      *
      * @param \DateTime $birthday
-     * @return FacebookUser
+     * @return User
      */
     public function setBirthday($birthday)
     {
@@ -371,7 +287,7 @@ class FacebookUser
      * Set email
      *
      * @param string $email
-     * @return FacebookUser
+     * @return User
      */
     public function setEmail($email)
     {
@@ -394,7 +310,7 @@ class FacebookUser
      * Set emailVerified
      *
      * @param string $emailVerified
-     * @return FacebookUser
+     * @return User
      */
     public function setEmailVerified($emailVerified)
     {
@@ -417,7 +333,7 @@ class FacebookUser
      * Set websiteUrl
      *
      * @param string $websiteUrl
-     * @return FacebookUser
+     * @return User
      */
     public function setWebsiteUrl($websiteUrl)
     {
@@ -440,7 +356,7 @@ class FacebookUser
      * Set profileUrl
      *
      * @param string $profileUrl
-     * @return FacebookUser
+     * @return User
      */
     public function setProfileUrl($profileUrl)
     {
@@ -463,7 +379,7 @@ class FacebookUser
      * Set profileImageUrl
      *
      * @param string $profileImageURL
-     * @return FacebookUser
+     * @return User
      */
     public function setProfileImageUrl($profileImageUrl)
     {
@@ -486,7 +402,7 @@ class FacebookUser
      * Set coverInfoUrl
      *
      * @param string $coverInfoUrl
-     * @return FacebookUser
+     * @return User
      */
     public function setCoverInfoUrl($coverInfoUrl)
     {
@@ -506,33 +422,10 @@ class FacebookUser
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     * @return FacebookUser
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set phone
      *
      * @param string $phone
-     * @return FacebookUser
+     * @return User
      */
     public function setPhone($phone)
     {
@@ -555,7 +448,7 @@ class FacebookUser
      * Set address
      *
      * @param string $address
-     * @return FacebookUser
+     * @return User
      */
     public function setAddress($address)
     {
@@ -578,7 +471,7 @@ class FacebookUser
      * Set country
      *
      * @param string $country
-     * @return FacebookUser
+     * @return User
      */
     public function setCountry($country)
     {
@@ -601,7 +494,7 @@ class FacebookUser
      * Set region
      *
      * @param string $region
-     * @return FacebookUser
+     * @return User
      */
     public function setRegion($region)
     {
@@ -624,7 +517,7 @@ class FacebookUser
      * Set city
      *
      * @param string $city
-     * @return FacebookUser
+     * @return User
      */
     public function setCity($city)
     {
@@ -647,7 +540,7 @@ class FacebookUser
      * Set zip
      *
      * @param string $zip
-     * @return FacebookUser
+     * @return User
      */
     public function setZip($zip)
     {
@@ -670,7 +563,7 @@ class FacebookUser
      * Set location
      *
      * @param \CampaignChain\CoreBundle\Entity\Location $location
-     * @return FacebookUser
+     * @return User
      */
     public function setLocation(\CampaignChain\CoreBundle\Entity\Location $location = null)
     {
@@ -693,7 +586,7 @@ class FacebookUser
      * Set scope
      *
      * @param string $scope
-     * @return FacebookUser
+     * @return User
      */
     public function setScope($scope)
     {
@@ -711,6 +604,7 @@ class FacebookUser
     {
         return $this->scope;
     }
+
     /**
      * Constructor
      */
@@ -722,10 +616,10 @@ class FacebookUser
     /**
      * Add pages
      *
-     * @param \CampaignChain\Location\FacebookBundle\Entity\FacebookPage $pages
-     * @return FacebookUser
+     * @param \CampaignChain\Location\FacebookBundle\Entity\Page $pages
+     * @return User
      */
-    public function addPage(\CampaignChain\Location\FacebookBundle\Entity\FacebookPage $pages)
+    public function addPage(\CampaignChain\Location\FacebookBundle\Entity\Page $pages)
     {
         $this->pages[] = $pages;
 
@@ -735,9 +629,9 @@ class FacebookUser
     /**
      * Remove pages
      *
-     * @param \CampaignChain\Location\FacebookBundle\Entity\FacebookPage $pages
+     * @param \CampaignChain\Location\FacebookBundle\Entity\Page $pages
      */
-    public function removePage(\CampaignChain\Location\FacebookBundle\Entity\FacebookPage $pages)
+    public function removePage(\CampaignChain\Location\FacebookBundle\Entity\Page $pages)
     {
         $this->pages->removeElement($pages);
     }

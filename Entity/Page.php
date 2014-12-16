@@ -14,37 +14,19 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="campaignchain_location_facebook_page")
  */
-class FacebookPage
+class Page extends LocationBase
 {
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="CampaignChain\Operation\FacebookBundle\Entity\PageStatus", mappedBy="page")
      */
-    protected $id;
+    protected $pageStatuses;
 
     /**
-     * @ORM\OneToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location", cascade={"persist"})
-     */
-    protected $location;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="FacebookUser", inversedBy="pages")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="pages")
      * @ORM\JoinTable(name="campaignchain_location_facebook_user_page")
      **/
     protected $users;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $username;
-
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    protected $identifier;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -56,12 +38,6 @@ class FacebookPage
      * TODO: What is the max length defined by Facebook?
      */
     protected $category;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     * TODO: What is the max length defined by Facebook?
-     */
-    protected $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -115,66 +91,10 @@ class FacebookPage
     protected $permissions;
 
     /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return FacebookPage
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * Set identifier
-     *
-     * @param string $identifier
-     * @return FacebookPage
-     */
-    public function setIdentifier($identifier)
-    {
-        $this->identifier = $identifier;
-
-        return $this;
-    }
-
-    /**
-     * Get identifier
-     *
-     * @return string 
-     */
-    public function getIdentifier()
-    {
-        return $this->identifier;
-    }
-
-    /**
      * Set name
      *
      * @param string $name
-     * @return FacebookPage
+     * @return Page
      */
     public function setName($name)
     {
@@ -197,7 +117,7 @@ class FacebookPage
      * Set category
      *
      * @param string $category
-     * @return FacebookPage
+     * @return Page
      */
     public function setCategory($category)
     {
@@ -217,33 +137,10 @@ class FacebookPage
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     * @return FacebookPage
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set about
      *
      * @param string $about
-     * @return FacebookPage
+     * @return Page
      */
     public function setAbout($about)
     {
@@ -266,7 +163,7 @@ class FacebookPage
      * Set coverId
      *
      * @param string $coverId
-     * @return FacebookPage
+     * @return Page
      */
     public function setCoverId($coverId)
     {
@@ -289,7 +186,7 @@ class FacebookPage
      * Set coverSource
      *
      * @param string $coverSource
-     * @return FacebookPage
+     * @return Page
      */
     public function setCoverSource($coverSource)
     {
@@ -312,7 +209,7 @@ class FacebookPage
      * Set coverOffsetX
      *
      * @param integer $coverOffsetX
-     * @return FacebookPage
+     * @return Page
      */
     public function setCoverOffsetX($coverOffsetX)
     {
@@ -335,7 +232,7 @@ class FacebookPage
      * Set coverOffsetY
      *
      * @param integer $coverOffsetY
-     * @return FacebookPage
+     * @return Page
      */
     public function setCoverOffsetY($coverOffsetY)
     {
@@ -358,7 +255,7 @@ class FacebookPage
      * Set link
      *
      * @param string $link
-     * @return FacebookPage
+     * @return Page
      */
     public function setLink($link)
     {
@@ -381,7 +278,7 @@ class FacebookPage
      * Set pictureUrl
      *
      * @param string $pictureUrl
-     * @return FacebookPage
+     * @return Page
      */
     public function setPictureUrl($pictureUrl)
     {
@@ -404,7 +301,7 @@ class FacebookPage
      * Set isPublished
      *
      * @param boolean $isPublished
-     * @return FacebookPage
+     * @return Page
      */
     public function setIsPublished($isPublished)
     {
@@ -427,7 +324,7 @@ class FacebookPage
      * Set canPost
      *
      * @param boolean $canPost
-     * @return FacebookPage
+     * @return Page
      */
     public function setCanPost($canPost)
     {
@@ -450,7 +347,7 @@ class FacebookPage
      * Set permissions
      *
      * @param array $permissions
-     * @return FacebookPage
+     * @return Page
      */
     public function setPermissions($permissions)
     {
@@ -473,7 +370,7 @@ class FacebookPage
      * Set location
      *
      * @param \CampaignChain\CoreBundle\Entity\Location $location
-     * @return FacebookPage
+     * @return Page
      */
     public function setLocation(\CampaignChain\CoreBundle\Entity\Location $location = null)
     {
@@ -502,10 +399,10 @@ class FacebookPage
     /**
      * Add users
      *
-     * @param \CampaignChain\Location\FacebookBundle\Entity\FacebookUser $users
-     * @return FacebookPage
+     * @param \CampaignChain\Location\FacebookBundle\Entity\User $users
+     * @return Page
      */
-    public function addUser(\CampaignChain\Location\FacebookBundle\Entity\FacebookUser $users)
+    public function addUser(\CampaignChain\Location\FacebookBundle\Entity\User $users)
     {
         $this->users[] = $users;
 
@@ -515,9 +412,9 @@ class FacebookPage
     /**
      * Remove users
      *
-     * @param \CampaignChain\Location\FacebookBundle\Entity\FacebookUser $users
+     * @param \CampaignChain\Location\FacebookBundle\Entity\User $users
      */
-    public function removeUser(\CampaignChain\Location\FacebookBundle\Entity\FacebookUser $users)
+    public function removeUser(\CampaignChain\Location\FacebookBundle\Entity\User $users)
     {
         $this->users->removeElement($users);
     }
