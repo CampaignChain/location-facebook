@@ -10,7 +10,7 @@
 
 namespace CampaignChain\Location\FacebookBundle\Entity;
 
-use CampaignChain\Operation\FacebookBundle\Entity\Status;
+use CampaignChain\Operation\FacebookBundle\Entity\StatusBase;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -151,7 +151,7 @@ abstract class LocationBase
      * @param Status $status
      * @return $this
      */
-    public function addStatus(Status $status)
+    public function addStatus(StatusBase $status)
     {
         $this->statuses[] = $status;
 
@@ -161,7 +161,7 @@ abstract class LocationBase
     /**
      * @param Status $status
      */
-    public function removeStatus(Status $status)
+    public function removeStatus(StatusBase $status)
     {
         $this->statuses->removeElement($status);
     }
