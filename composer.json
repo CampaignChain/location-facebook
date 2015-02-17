@@ -12,12 +12,19 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "campaignchain/channel-facebook": "dev-master"
+=======
+        "campaignchain/channel-facebook": "dev-master"
+>>>>>>> 1.0.0-beta.1
     },
     "autoload": {
         "psr-4": { "CampaignChain\\Location\\FacebookBundle\\": "" }
     },
     "extra": {
+        "branch-alias": {
+            "dev-1.0.0-beta.1": "1.0.0-dev"
+        },
         "campaignchain": {
             "kernel": {
                 "classes": [
