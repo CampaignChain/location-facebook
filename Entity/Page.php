@@ -367,28 +367,6 @@ class Page extends LocationBase
     }
 
     /**
-     * Set location
-     *
-     * @param \CampaignChain\CoreBundle\Entity\Location $location
-     * @return Page
-     */
-    public function setLocation(\CampaignChain\CoreBundle\Entity\Location $location = null)
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return \CampaignChain\CoreBundle\Entity\Location
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-    /**
      * Constructor
      */
     public function __construct()
