@@ -9,10 +9,12 @@ modules:
     campaignchain-facebook-user:
         display_name: Facebook user stream
         hooks:
-            campaignchain-assignee: true
+            default:
+                campaignchain-assignee: true
     campaignchain-facebook-page:
         display_name: Facebook page stream
         hooks:
-            campaignchain-assignee: true
+            default:
+                campaignchain-assignee: true
     campaignchain-facebook-status:
         display_name: Facebook status
