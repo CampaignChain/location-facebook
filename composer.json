@@ -1,6 +1,6 @@
 {
     "name": "campaignchain/location-facebook",
-    "description": "Facebook locations such as user and page stream, as well as status.",
+    "description": "Holds information about Facebook locations such as user and page stream, as well as status messages.",
     "keywords": ["facebook","campaignchain"],
     "type": "campaignchain-location",
     "homepage": "http://www.campaignchain.com",
