@@ -6,5 +6,8 @@
 # file that was distributed with this source code.
 
 parameters:
+    campaignchain.location.facebook.status:
+        bundle_name: "campaignchain/location-facebook"
+        module_identifier: "campaignchain-facebook-status"
 
 services:
