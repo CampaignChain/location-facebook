@@ -11,6 +11,7 @@
 namespace CampaignChain\Location\FacebookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use CampaignChain\CoreBundle\Util\ParserUtil;
 
 /**
  * @ORM\Entity
@@ -360,7 +361,7 @@ class User extends LocationBase
      */
     public function setProfileUrl($profileUrl)
     {
-        $this->profileUrl = $profileUrl;
+        $this->profileUrl = ParserUtil::sanitizeUrl($profileUrl);
 
         return $this;
     }
@@ -406,7 +407,7 @@ class User extends LocationBase
      */
     public function setCoverInfoUrl($coverInfoUrl)
     {
-        $this->coverInfoUrl = $coverInfoUrl;
+        $this->coverInfoUrl = ParserUtil::sanitizeUrl($coverInfoUrl);
 
         return $this;
     }
