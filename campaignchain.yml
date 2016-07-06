@@ -16,5 +16,12 @@ modules:
         hooks:
             default:
                 campaignchain-assignee: true
+        services:
+            report: campaignchain.job.report.location.facebook
+        metrics:
+            location:
+                - "Likes"
+
     campaignchain-facebook-status:
         display_name: Facebook status
+
