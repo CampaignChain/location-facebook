@@ -8,11 +8,15 @@
 modules:
     campaignchain-facebook-user:
         display_name: Facebook user stream
+        channels:
+            - campaignchain/channel-facebook/campaignchain-facebook
         hooks:
             default:
                 campaignchain-assignee: true
     campaignchain-facebook-page:
         display_name: Facebook page stream
+        channels:
+            - campaignchain/channel-facebook/campaignchain-facebook
         hooks:
             default:
                 campaignchain-assignee: true
@@ -21,7 +25,8 @@ modules:
         metrics:
             location:
                 - "Likes"
-
     campaignchain-facebook-status:
         display_name: Facebook status
+        channels:
+            - campaignchain/channel-facebook/campaignchain-facebook
 
