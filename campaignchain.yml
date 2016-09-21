@@ -31,6 +31,8 @@ modules:
             report: campaignchain.job.report.location.facebook
         metrics:
             location:
+                - "Fans"
+                - "Friends"
                 - "Likes"
     campaignchain-facebook-status:
         display_name: Facebook status
