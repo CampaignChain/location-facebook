@@ -16,7 +16,7 @@ use CampaignChain\CoreBundle\EntityService\FactService;
 use CampaignChain\CoreBundle\Job\JobReportInterface;
 use CampaignChain\Location\FacebookBundle\Entity\LocationBase;
 use CampaignChain\Location\FacebookBundle\Entity\Page;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use CampaignChain\CoreBundle\Exception\ExternalApiException;
 
 class ReportFacebookPageMetrics implements JobReportInterface
@@ -31,9 +31,9 @@ class ReportFacebookPageMetrics implements JobReportInterface
 
     protected $message;
 
-    public function __construct(EntityManager $em, $container)
+    public function __construct(ManagerRegistry $managerRegistry, $container)
     {
-        $this->em = $em;
+        $this->em = $managerRegistry->getManager();
         $this->container = $container;
     }
 

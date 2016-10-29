@@ -20,4 +20,4 @@ parameters:
 services:
     campaignchain.job.report.location.facebook:
         class: CampaignChain\Location\FacebookBundle\Job\ReportFacebookPageMetrics
-        arguments: [ @doctrine.orm.entity_manager, @service_container ]
+        arguments: [ @doctrine, @service_container ]
