@@ -63,24 +63,18 @@ class ReportFacebookPageMetrics implements JobReportInterface
         if ($connection) {
             $facts = array();
             $this->message = 'Added to report:';
-            $baseUri = '/'.$facebookLocation->getIdentifier();
             try {
                 if ($facebookLocation instanceof Page) {
                     // Collect stats for Facebook Page Location.
-                    $response = $connection->api($baseUri, 'GET');
-                    $facts[self::METRIC_FANS] = $response['likes'];
+                    $response = $connection->getPageFanCount($facebookLocation->getIdentifier());
+                    $facts[self::METRIC_FANS] = $response['fan_count'];
                     $this->message .= ' '.self::METRIC_FANS.' = '.$facts[self::METRIC_FANS];
                 } else {
                     // Collect stats for Facebook User Location.
-                    $params = [
-                        'summary' => 'true',
-                    ];
-                    $response = $connection->api($baseUri . '/friends', 'GET', $params);
+                    $response = $connection->getUserFriendsCount($facebookLocation->getIdentifier());
                     $facts[self::METRIC_FRIENDS] = $response['summary']['total_count'];
                     $this->message .= ' '.self::METRIC_FRIENDS.' = '.$facts[self::METRIC_FRIENDS];
                 }
-
-                $connection->destroySession();
             } catch (\Exception $e) {
                 throw new ExternalApiException($e->getMessage(), $e->getCode(), $e);
             }
