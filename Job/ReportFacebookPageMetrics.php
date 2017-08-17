@@ -43,6 +43,7 @@ class ReportFacebookPageMetrics implements JobReportInterface
         $scheduler->setLocation($location);
         $scheduler->setInterval('1 hour');
         $this->em->persist($scheduler);
+        $this->em->flush();
 
         $facts[self::METRIC_LIKES] = 0;
 
